@@ -10,8 +10,6 @@ app.set('view engine', '.hbs')
 app.set('views', './views')
 app.use(express.static('public'))
 
-
-app.use(express.static('public'))
 app.get('/',(req,res)=>{
   res.redirect('/restaurants')
 })
@@ -20,7 +18,9 @@ app.get('/restaurants', (req, res) => {
 })
 app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id
-  res.send(`read restaurant: ${id}`)
+  const restaurant = restaurants.find((re)=>
+    re.id.toString() === id)
+  res.render('show', {restaurant})
 })
 app.listen(port, ()=>{
   console.log(`express server is running on http://localhost:${port}`)
