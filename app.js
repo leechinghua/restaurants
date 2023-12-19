@@ -14,7 +14,9 @@ app.get('/',(req,res)=>{
   res.redirect('/restaurants')
 })
 app.get('/restaurants', (req, res) => {
-  res.render('index', { restaurants: restaurants})
+  const keyword = req.query.search
+  console.log('keyword',keyword)
+  res.render('index', {restaurants})
 })
 app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id

@@ -1,4 +1,8 @@
 <header>
+  <link href="/stylesheets/index.css" rel="stylesheet">
+  <link rel="shortcut icon"
+    href="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
+    type="image/x-icon">
   <!-- navigation -->
   <nav class="navbar navbar-light bg-light">
     <div class="container">
@@ -20,10 +24,10 @@
       <form action="/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="" aria-describedby="search-button">
+          <input type="text" name="search" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+             aria-describedby="search-button" value="{{keyword}}">
           <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search" ></i></button>            
           </div>
         </div>
       </form>
