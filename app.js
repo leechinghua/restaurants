@@ -14,7 +14,7 @@ app.get('/',(req,res)=>{
   res.redirect('/restaurants')
 })
 app.get('/restaurants', (req, res) => {
-  const keyword = req.query.search
+  const keyword = req.query.keyword
   console.log('keyword',keyword)
   res.render('index', {restaurants})
 })
