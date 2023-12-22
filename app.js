@@ -13,11 +13,19 @@ app.use(express.static('public'))
 app.get('/',(req,res)=>{
   res.redirect('/restaurants')
 })
+
 app.get('/restaurants', (req, res) => {
-  const keyword = req.query.keyword
-  console.log('keyword',keyword)
-  res.render('index', {restaurants})
+  const keyword = req.query.keyword?.trim()
+  const matchedRestaurants = keyword ? restaurants.filter((re) => Object.values(re).some((property) => {
+    if(typeof property === 'string'){
+      return property.toLowerCase().includes(keyword.toLowerCase())
+    }
+    return false
+  })
+  ):restaurants
+  res.render('index', {restaurants: matchedRestaurants, keyword})
 })
+
 app.get('/restaurant/:id', (req, res) => {
   const id = req.params.id
   const restaurant = restaurants.find((re)=>
